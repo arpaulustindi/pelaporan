@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class LaporanController extends Controller{
 
     public function showAllLaporan(){
-        return response()->json(Laporan::all());
+        return response()->json(["laporans"=> Laporan::all()]);
     }
 
     public function showOneLaporan($id){
