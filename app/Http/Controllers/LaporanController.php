@@ -19,12 +19,20 @@ class LaporanController extends Controller{
     public function create(Request $request){
         $input = $request->all();
         if($request->hasFile('gambar')){
-            $nama = "xxxx";
+            $nama = $request->file('gambar')->getClientOriginalName();
             $request->file('gambar')->move(storage_path('gambar'), $nama);
-        }
-        $laporan = Laporan::create($request->all());
 
-        return response()->json($laporan, 201);
+            $laporan = new Laporan();
+            $laporan->nama = $request->nama;
+            $laporan->hp = $request->hp;
+            $laporan->detail = $request->detail;
+            $laporan->gambar = $nama;
+            $laporan->metadata = $request->metadata;
+            $laporan->save();
+            return response()->json($laporan, 201);
+        }
+        //$laporan = Laporan::create($request->all());
+
     }
 
     public function update($id, Request $request){

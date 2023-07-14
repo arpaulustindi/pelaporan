@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('laporans', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('hp');
+            $table->string('detail');
             $table->string('gambar');
-            $table->json('metadata');
+            $table->string('metadata');
             $table->timestamps();
         });
     }
