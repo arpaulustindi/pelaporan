@@ -20,7 +20,7 @@ class LaporanController extends Controller{
         $input = $request->all();
         if($request->hasFile('gambar')){
             $nama = $request->file('gambar')->getClientOriginalName();
-            $request->file('gambar')->move(storage_path('gambar'), $nama);
+            $request->file('gambar')->move(storage_path('app/public/gambar'), $nama);
 
             $laporan = new Laporan();
             $laporan->nama = $request->nama;
